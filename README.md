@@ -35,8 +35,7 @@ const appsConfig = [
     }
     // Add more apps here...
 ];
-
-
+```
 
 *(Tip: You can get free SVG icons from [BoxIcons](https://boxicons.com/) or [SVG Repo](https://www.svgrepo.com/). Just copy the `<path>` data).*
 
@@ -44,5 +43,8 @@ To change the greeting name, find the `updateTime()` function in `script.js` and
 
 ```javascript
 document.getElementById('greetingText').innerText = `${greeting}, YourName!`;
+```
 
-👨‍💻 Developed By
+## 👨‍💻 Developed By
+
+Built with ❤️ by **Mehedi** (Aspiring Web Developer).
