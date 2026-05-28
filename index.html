@@ -3,19 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mehedi's Personal Homepage</title>
+<title>Mehedi's Professional Homepage</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header>
   <h1>Hello, Mehedi!</h1>
-  <p>Your professional Chrome homepage</p>
-  <input id="searchInput" type="text" placeholder="Search / Open site...">
+  <p>Your modern Chrome-style homepage</p>
+  <div class="search-container">
+    <input id="searchInput" type="text" placeholder="Search or type URL..." />
+    <ul id="suggestions"></ul>
+  </div>
   <button id="themeToggle">Toggle Theme</button>
 </header>
+
 <main class="tiles" id="tileContainer">
-  <!-- Tiles added via script.js -->
+  <!-- Tiles populated via script.js -->
 </main>
+
 <script src="script.js"></script>
 </body>
 </html>
