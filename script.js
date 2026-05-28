@@ -8,37 +8,42 @@ const tileData = [
   {name:'Gemini', url:'https://www.gemini.com', icon:'https://via.placeholder.com/50'}
 ];
 
+// Populate tiles
 const container = document.getElementById('tileContainer');
 tileData.forEach(tile=>{
-  const div = document.createElement('div');
-  div.className = 'tile';
-  div.dataset.url = tile.url;
-  div.innerHTML = `<img src="${tile.icon}"/><span>${tile.name}</span>`;
+  const div=document.createElement('div');
+  div.className='tile';
+  div.dataset.url=tile.url;
+  div.innerHTML=`<img src="${tile.icon}" alt="${tile.name}"/><span>${tile.name}</span>`;
   div.addEventListener('click',()=>window.open(tile.url,'_blank'));
   container.appendChild(div);
 });
 
-// Search functionality
-const searchInput = document.getElementById('searchInput');
-searchInput.addEventListener('keypress',function(e){
-  if(e.key==='Enter'){
+// Search autocomplete
+const searchInput=document.getElementById('searchInput');
+const suggestions=document.getElementById('suggestions');
+searchInput.addEventListener('input',()=>{
+  const val=searchInput.value.toLowerCase();
+  if(!val){ suggestions.style.display='none'; return; }
+  const matches=tileData.filter(t=>t.name.toLowerCase().includes(val));
+  suggestions.innerHTML=matches.map(m=>`<li data-url="${m.url}">${m.name}</li>`).join('');
+  suggestions.style.display=matches.length?'block':'none';
+});
+suggestions.addEventListener('click',e=>{
+  if(e.target.tagName==='LI'){ window.open(e.target.dataset.url,'_blank'); suggestions.style.display='none'; searchInput.value=''; }
+});
+searchInput.addEventListener('keypress',e=>{
+  if(e.key==='Enter'){ 
     let val=searchInput.value.trim();
     if(!val) return;
     let url=val;
     if(!/^https?:\/\//i.test(val)) url='https://www.google.com/search?q='+encodeURIComponent(val);
-    window.open(url,'_blank');
-    searchInput.value='';
+    window.open(url,'_blank'); searchInput.value=''; suggestions.style.display='none';
   }
 });
 
 // Theme toggle
-const themeBtn=document.getElementById('themeToggle');
-themeBtn.addEventListener('click',()=>{
-  if(document.body.style.background==='#111'){
-    document.body.style.background='#fff';
-    document.body.style.color='#000';
-  }else{
-    document.body.style.background='#111';
-    document.body.style.color='#fff';
-  }
+document.getElementById('themeToggle').addEventListener('click',()=>{
+  if(document.body.style.background==='#111'){document.body.style.background='#fff'; document.body.style.color='#000';}
+  else{document.body.style.background='#111'; document.body.style.color='#fff';}
 });
