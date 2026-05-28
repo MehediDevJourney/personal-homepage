@@ -1,9 +1,9 @@
-body { font-family:'Segoe UI', sans-serif; background:#111; color:#fff; margin:0; }
+body { font-family: 'Segoe UI', sans-serif; margin:0; padding:0; background:#111; color:#fff; }
 header { text-align:center; padding:20px; }
-header input { width:90%; max-width:400px; padding:10px; border-radius:8px; border:none; margin-top:10px; }
-.tiles { display:grid; grid-template-columns:repeat(auto-fit, minmax(120px, 1fr)); gap:15px; max-width:1000px; margin:20px auto; padding:0 10px; }
-.tile { background:#222; padding:20px; border-radius:15px; text-align:center; cursor:pointer; transition:0.2s; }
-.tile:hover { background:#333; transform:scale(1.05); }
+header input { width:80%; max-width:400px; padding:10px; margin-top:10px; border-radius:8px; border:none; }
+header button { padding:8px 16px; margin-top:10px; border-radius:8px; border:none; cursor:pointer; }
+.tiles { display:grid; grid-template-columns:repeat(auto-fit, minmax(120px,1fr)); gap:15px; max-width:1000px; margin:20px auto; padding:0 10px; }
+.tile { background:rgba(34,34,34,0.8); padding:20px; border-radius:15px; text-align:center; cursor:pointer; transition:transform 0.2s, box-shadow 0.2s; }
+.tile:hover { transform:scale(1.05); box-shadow:0 8px 20px rgba(255,255,255,0.2); }
 .tile img { width:50px; height:50px; margin-bottom:10px; }
 .tile span { display:block; font-size:0.9em; }
-@media(max-width:600px){ .tile img{width:40px;height:40px;} }
