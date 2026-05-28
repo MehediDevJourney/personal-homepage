@@ -1,26 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mehedi's Professional Homepage</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="preconnect" href="https://suggestqueries.google.com">
+    <title>Workspace | Premium Startpage</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1>Hello, Mehedi!</h1>
-  <p>Your professional Chrome-style homepage</p>
-  <div class="search-container">
-    <input id="searchInput" type="text" placeholder="Search or type URL..."/>
-    <ul id="suggestions"></ul>
-  </div>
-  <button id="themeToggle">Toggle Theme</button>
-</header>
 
-<main class="tiles" id="tileContainer">
-  <!-- Tiles generated dynamically via script.js -->
-</main>
+    <div class="top-bar">
+        <button id="themeToggle">🌙 Dark</button>
+    </div>
 
-<script src="script.js"></script>
+    <div class="greeting-container">
+        <div id="clock">00:00</div>
+        <div id="greetingText">Hello, Mehedi!</div>
+    </div>
+
+    <div class="search-container">
+        <div class="search-wrapper">
+            <input id="searchInput" type="text" autocomplete="off" spellcheck="false" />
+            
+            <svg class="search-icon" viewBox="0 0 24 24"><path d="M21.71,20.29,18,16.61A9,9,0,1,0,16.61,18l3.68,3.68a1,1,0,0,0,1.42,0A1,1,0,0,0,21.71,20.29ZM11,18a7,7,0,1,1,7-7A7,7,0,0,1,11,18Z"/></svg>
+            <button class="clear-btn" id="clearBtn" aria-label="Clear Search">✕</button>
+        </div>
+        <ul id="suggestions"></ul>
+    </div>
+
+    <main class="dock-container">
+        <div class="apps-grid" id="appsGrid">
+            </div>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
