@@ -19,3 +19,17 @@
 - Add/remove tiles in `script.js`
 - Change icons URLs
 - Modify `style.css` for theme/colors
+
+- personal-homepage/
+├── index.html        # Main homepage
+├── style.css         # Advanced responsive UI/UX
+├── script.js         # Tiles, search, drag-drop, autocomplete
+├── assets/           # CDN/placeholder icons
+│   ├── facebook.png
+│   ├── chatgpt.png
+│   ├── drive.png
+│   ├── photos.png
+│   ├── telegram.png
+│   ├── deepseek.png
+│   └── gemini.png
+└── README.md         # Setup + customization instructions
