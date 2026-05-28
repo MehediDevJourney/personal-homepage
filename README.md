@@ -1,22 +1,21 @@
 # Professional Personal Homepage
 
 ## Features
-- Modern UI/UX, dark/light theme
-- Fully responsive, mobile + desktop friendly
+- Modern dark/light theme with toggle
+- Responsive tiles for Social, Chat, Work, Utilities
 - Autocomplete search bar (URL + Google)
-- Clickable tiles with instant open
-- Drag & drop reorderable tiles (future upgrade)
+- Clickable tiles open instantly
+- Mobile + Desktop friendly
 - CDN icons for fast load
 - GitHub Pages ready
 
 ## Setup
-1. Create public repository in GitHub
+1. Create a public repository in GitHub
 2. Upload `index.html`, `style.css`, `script.js`
 3. Enable GitHub Pages: Settings → Pages → Branch: main → Root → Save
-4. Access live URL and set Chrome homepage
+4. Access your live URL and set Chrome homepage
 
 ## Customization
 - Add/remove tiles in `script.js`
-- Change icons URLs
+- Change icon URLs
 - Modify `style.css` for theme/colors
-
