@@ -73,7 +73,13 @@ body {
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     text-shadow: 0 10px 30px rgba(37, 99, 235, 0.15);
 }
-#greetingText { font-size: clamp(1.1rem, 3.5vw, 1.4rem); font-weight: 600; opacity: 0.85; }
+#greetingText { font-size: clamp(1.1rem, 3.5vw, 1.4rem); font-weight: 600; opacity: 0.9; }
+
+/* New Quote Feature */
+#quoteText {
+    font-size: clamp(0.85rem, 2.5vw, 1rem); margin-top: 8px; font-style: italic;
+    opacity: 0.7; font-weight: 500; max-width: 400px; margin-inline: auto;
+}
 
 /* --- Search Box --- */
 .search-container {
@@ -120,7 +126,7 @@ body {
 #suggestions li svg { width: 18px; height: 18px; fill: var(--search-icon-color); flex-shrink: 0; }
 #suggestions li:hover svg, .suggestion-active svg { fill: var(--accent-color); }
 
-/* --- Dock --- */
+/* --- Dock / App Grid --- */
 .dock-container {
     background: var(--dock-bg); border: 1px solid var(--glass-border);
     border-bottom: 1px solid rgba(255,255,255,0.1); border-radius: 32px; padding: 22px 18px;
@@ -129,10 +135,13 @@ body {
     animation: fadeUp 1s ease 0.1s backwards; position: relative; z-index: 1;
 }
 
-.apps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px 12px; }
+/* Perfect 4 Column Grid for 12 Items */
+.apps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px 15px; }
+
 @media (min-width: 600px) {
-    .dock-container { padding: 30px; border-radius: 38px; }
-    .apps-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 35px; }
+    .dock-container { padding: 35px; border-radius: 38px; }
+    /* Desktop uses Flex or standard grid */
+    .apps-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 35px; justify-items: center; }
 }
 
 .app-container { display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; position: relative; }
@@ -141,6 +150,14 @@ body {
     border: 1px solid var(--glass-border); display: flex; align-items: center; justify-content: center;
     box-shadow: 0 4px 15px rgba(0,0,0,0.06); transition: all 0.3s ease; position: relative; overflow: hidden;
 }
+
+/* Real Images Styling */
+.app-icon-box img {
+    width: 38px; height: 38px; object-fit: contain; 
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 6px;
+}
+
 .app-icon-box::after {
     content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
     background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
@@ -149,12 +166,14 @@ body {
 .app-container:hover .app-icon-box::after { left: 200%; }
 .app-container:active .app-icon-box { transform: scale(0.85); background: var(--suggestion-hover); }
 
+.app-container:hover .app-icon-box img { transform: scale(1.15); } /* Image zoom on hover */
+
 @media (min-width: 600px) {
     .app-container:hover .app-icon-box { transform: translateY(-8px); box-shadow: var(--shadow-strong); }
     .app-icon-box { width: 72px; height: 72px; border-radius: 22px; }
+    .app-icon-box img { width: 44px; height: 44px; }
 }
 
-.app-icon-box svg { width: 32px; height: 32px; fill: var(--text-color); transition: fill 0.3s; }
 .app-label { font-size: 0.8rem; font-weight: 600; color: var(--text-color); opacity: 0.9; text-shadow: 0 1px 2px rgba(0,0,0,0.05); }
 
 /* Animations */
