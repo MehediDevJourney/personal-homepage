@@ -1,118 +1,103 @@
 :root {
-    --bg-color: #f1f5f9;
-    --gradient-1: #e2e8f0; --gradient-2: #f8fafc; --gradient-3: #e0e7ff;
-    --text-color: #0f172a;
-    --glass-bg: rgba(255, 255, 255, 0.45);
+    /* iOS Light Theme Colors */
+    --bg-color: #f2f2f7;
+    --mesh-1: #e0c3fc; --mesh-2: #8ec5fc; --mesh-3: #ffffff;
+    --text-main: #1c1c1e;
+    --text-muted: #8e8e93;
+    --glass-bg: rgba(255, 255, 255, 0.6);
     --glass-border: rgba(255, 255, 255, 0.8);
-    --dock-bg: rgba(255, 255, 255, 0.7);
-    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.05);
-    --shadow-strong: 0 16px 40px rgba(37, 99, 235, 0.15);
-    --accent-color: #2563eb;
-    --icon-bg: #ffffff;
-    --suggestion-hover: #e2e8f0;
-    --search-icon-color: #94a3b8;
+    --dock-bg: rgba(255, 255, 255, 0.75);
+    --icon-box-bg: #ffffff;
+    --shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+    --accent: #007aff;
 }
 
 [data-theme="dark"] {
-    --bg-color: #050b14;
-    --gradient-1: #050b14; --gradient-2: #0f172a; --gradient-3: #16123f;
-    --text-color: #f8fafc;
-    --glass-bg: rgba(15, 23, 42, 0.5);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --dock-bg: rgba(15, 23, 42, 0.65);
-    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.6);
-    --shadow-strong: 0 16px 40px rgba(0, 0, 0, 0.9);
-    --accent-color: #3b82f6;
-    --icon-bg: rgba(30, 41, 59, 0.8);
-    --suggestion-hover: #1e293b;
-    --search-icon-color: #64748b;
+    /* iOS Dark Theme Colors */
+    --bg-color: #000000;
+    --mesh-1: #1c1c20; --mesh-2: #141432; --mesh-3: #0a0a0a;
+    --text-main: #ffffff;
+    --text-muted: #98989d;
+    --glass-bg: rgba(28, 28, 30, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --dock-bg: rgba(30, 30, 30, 0.75);
+    --icon-box-bg: #1c1c1e;
+    --shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    --accent: #0a84ff;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif; }
 
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
-    background: linear-gradient(-45deg, var(--gradient-1), var(--gradient-2), var(--gradient-3));
-    background-size: 400% 400%; animation: gradientBG 15s ease infinite;
-    color: var(--text-color); min-height: 100vh;
-    display: flex; flex-direction: column; align-items: center;
-    padding: 20px; overflow-x: hidden; transition: color 0.4s ease;
-}
+body { background-color: var(--bg-color); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; align-items: center; overflow-x: hidden; transition: background-color 0.4s; }
 
-@keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+/* Dynamic Mesh Background */
+.mesh-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; background: radial-gradient(at 0% 0%, var(--mesh-1) 0px, transparent 50%), radial-gradient(at 100% 0%, var(--mesh-2) 0px, transparent 50%), radial-gradient(at 100% 100%, var(--mesh-3) 0px, transparent 50%); filter: blur(60px); opacity: 0.8; transition: all 0.5s; }
 
-#themeToggle {
-    position: absolute; top: 20px; right: 20px;
-    background: var(--glass-bg); border: 1px solid var(--glass-border); color: var(--text-color);
-    width: 40px; height: 40px; border-radius: 50%; cursor: pointer;
-    backdrop-filter: blur(20px); font-size: 1.2rem; box-shadow: var(--shadow-soft);
-    display: flex; align-items: center; justify-content: center; z-index: 100;
-}
+/* Top Bar */
+.top-bar { width: 100%; max-width: 500px; display: flex; justify-content: space-between; align-items: center; padding: 20px; animation: fadeDown 0.8s ease; }
+.status-pill { background: var(--glass-bg); padding: 8px 16px; border-radius: 20px; border: 1px solid var(--glass-border); font-size: 0.85rem; font-weight: 600; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); box-shadow: var(--shadow); display: flex; gap: 8px; align-items: center; }
+.dot { color: var(--text-muted); }
+#themeToggle { background: var(--glass-bg); border: 1px solid var(--glass-border); width: 38px; height: 38px; border-radius: 50%; font-size: 1.1rem; cursor: pointer; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); box-shadow: var(--shadow); display: flex; align-items: center; justify-content: center; transition: transform 0.2s; }
+#themeToggle:active { transform: scale(0.9); }
 
-/* --- Smart Widget --- */
-.smart-widget {
-    width: 100%; max-width: 400px; margin-top: 3vh; margin-bottom: 4vh;
-    background: var(--glass-bg); border: 1px solid var(--glass-border);
-    border-radius: 28px; padding: 25px; box-shadow: var(--shadow-soft);
-    backdrop-filter: blur(25px); animation: fadeDown 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.widget-header { display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: 600; opacity: 0.8; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
-#widgetClock { font-size: 4.5rem; font-weight: 800; letter-spacing: -2px; line-height: 1; text-align: center; margin-bottom: 10px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.widget-footer { text-align: center; font-size: 1.2rem; font-weight: 600; opacity: 0.9; }
+/* Clock Widget */
+.clock-widget { text-align: center; margin: 2vh 0 4vh; animation: fadeDown 1s ease; }
+#widgetClock { font-size: 5rem; font-weight: 700; letter-spacing: -2px; line-height: 1; margin-bottom: 5px; }
+#greetingText { font-size: 1.2rem; font-weight: 500; color: var(--text-muted); letter-spacing: 0.5px; }
 
-/* --- Search Box --- */
-.search-container { width: 100%; max-width: 600px; position: relative; margin-bottom: 5vh; z-index: 1000; animation: zoomIn 0.8s ease; }
+/* Search Box */
+.search-container { width: 90%; max-width: 450px; position: relative; margin-bottom: 5vh; z-index: 100; animation: zoomIn 0.8s ease; }
 .search-wrapper { position: relative; width: 100%; display: flex; align-items: center; }
-.search-icon { position: absolute; left: 22px; width: 22px; height: 22px; fill: var(--search-icon-color); transition: 0.3s ease; pointer-events: none; z-index: 5;}
-#searchInput {
-    width: 100%; padding: 18px 55px; font-size: 1.15rem; font-weight: 500;
-    border-radius: 22px; border: 1px solid var(--glass-border); background: var(--glass-bg);
-    color: var(--text-color); box-shadow: var(--shadow-soft); outline: none; backdrop-filter: blur(25px); transition: all 0.3s;
-}
-#searchInput:focus { transform: translateY(-2px) scale(1.02); border-color: var(--accent-color); box-shadow: var(--shadow-strong); background: var(--icon-bg); }
-#searchInput:focus ~ .search-icon { fill: var(--accent-color); }
-.clear-btn { position: absolute; right: 18px; width: 32px; height: 32px; border-radius: 50%; background: var(--suggestion-hover); border: none; color: var(--text-color); cursor: pointer; display: none; align-items: center; justify-content: center; z-index: 10;}
+.search-icon { position: absolute; left: 20px; width: 20px; height: 20px; fill: var(--text-muted); pointer-events: none; z-index: 5; transition: fill 0.3s; }
+#searchInput { width: 100%; padding: 18px 50px; font-size: 1.1rem; font-weight: 500; border-radius: 24px; border: 1px solid var(--glass-border); background: var(--glass-bg); color: var(--text-main); box-shadow: var(--shadow); outline: none; backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); transition: all 0.3s; }
+#searchInput:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.15), var(--shadow); background: var(--icon-box-bg); }
+#searchInput:focus ~ .search-icon { fill: var(--accent); }
+.clear-btn { position: absolute; right: 15px; width: 30px; height: 30px; border-radius: 50%; background: var(--text-muted); opacity: 0.2; border: none; color: #fff; cursor: pointer; display: none; align-items: center; justify-content: center; z-index: 10; transition: opacity 0.2s; }
+.clear-btn:hover { opacity: 0.5; }
 
-#suggestions {
-    position: absolute; top: calc(100% + 12px); left: 0; width: 100%; background: var(--icon-bg);
-    backdrop-filter: blur(30px); border: 1px solid var(--glass-border); border-radius: 18px;
-    list-style: none; max-height: 250px; overflow-y: auto; display: none; box-shadow: var(--shadow-strong); padding: 8px 0;
-}
-#suggestions li { padding: 14px 22px; cursor: pointer; font-size: 1.05rem; display: flex; align-items: center; gap: 14px; }
-#suggestions li:hover, .suggestion-active { background-color: var(--suggestion-hover); color: var(--accent-color); }
-#suggestions li svg { width: 18px; height: 18px; fill: var(--search-icon-color); }
+/* Suggestions */
+#suggestions { position: absolute; top: calc(100% + 10px); left: 0; width: 100%; background: var(--glass-bg); backdrop-filter: blur(30px); border: 1px solid var(--glass-border); border-radius: 18px; list-style: none; max-height: 250px; overflow-y: auto; display: none; box-shadow: var(--shadow); padding: 8px 0; }
+#suggestions li { padding: 12px 20px; cursor: pointer; font-size: 1rem; display: flex; align-items: center; gap: 12px; }
+#suggestions li:hover, .suggestion-active { background: rgba(0,0,0,0.05); color: var(--accent); }
+[data-theme="dark"] #suggestions li:hover { background: rgba(255,255,255,0.1); }
+#suggestions li svg { width: 16px; height: 16px; fill: var(--text-muted); }
 
-/* --- App Icon Styles (Shared) --- */
-.app-container { display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; }
-.app-icon-box {
-    width: 65px; height: 65px; border-radius: 18px; background: var(--icon-bg);
+/* --- App Icons Styling --- */
+.app-container { display: flex; flex-direction: column; align-items: center; gap: 6px; cursor: pointer; width: 100%; }
+.app-icon-box { 
+    width: 65px; height: 65px; background: var(--icon-box-bg);
+    border-radius: 22.5%; /* Perfect Apple Squircle */
     border: 1px solid var(--glass-border); display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06); transition: all 0.2s ease; padding: 12px; 
 }
-.app-icon-box svg { width: 40px; height: 40px; transition: transform 0.3s; }
-.app-container:hover .app-icon-box { transform: translateY(-5px); box-shadow: var(--shadow-strong); }
-.app-container:hover .app-icon-box svg { transform: scale(1.1); }
+.app-icon-box img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); transition: transform 0.3s; }
 .app-container:active .app-icon-box { transform: scale(0.9); }
-.app-label { font-size: 0.8rem; font-weight: 600; color: var(--text-color); opacity: 0.9; text-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+.app-label { font-size: 0.75rem; font-weight: 600; color: var(--text-main); text-shadow: 0 1px 2px rgba(0,0,0,0.05); text-align: center; }
 
-/* --- Main Grid (3x2 Layout for Mobile) --- */
-.main-apps-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px 20px;
-    width: 100%; max-width: 400px; margin-bottom: 120px; animation: fadeUp 1s ease 0.1s backwards;
-}
+/* Dark mode fix for black logos (GitHub, W3Schools etc.) */
+[data-theme="dark"] .invert-dark { filter: invert(1) drop-shadow(0 2px 4px rgba(255,255,255,0.1)); }
 
-/* --- Bottom Dock (4 Apps) --- */
-.bottom-dock-container {
-    position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%);
-    background: var(--dock-bg); border: 1px solid var(--glass-border); border-bottom: 1px solid rgba(255,255,255,0.2);
-    border-radius: 35px; padding: 18px 25px; box-shadow: var(--shadow-strong);
-    backdrop-filter: blur(35px) saturate(200%); -webkit-backdrop-filter: blur(35px) saturate(200%);
-    width: 90%; max-width: 450px; z-index: 100;
-}
-.dock-apps { display: flex; justify-content: space-between; align-items: center; width: 100%; }
-.dock-apps .app-label { display: none; } /* Hide labels in dock for clean look */
-.dock-apps .app-icon-box { width: 60px; height: 60px; border-radius: 16px; margin: 0; box-shadow: none; border: none; background: transparent; }
-.dock-apps .app-container:hover .app-icon-box { box-shadow: 0 8px 20px rgba(0,0,0,0.1); background: var(--icon-bg); border: 1px solid var(--glass-border); }
+/* Main Grid (3x2) */
+.main-apps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px 20px; width: 90%; max-width: 350px; margin-bottom: 120px; animation: fadeUp 1s ease 0.1s backwards; }
+
+/* Bottom Dock */
+.ios-dock { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--dock-bg); border: 1px solid var(--glass-border); border-radius: 35px; padding: 15px 20px; box-shadow: var(--shadow); backdrop-filter: blur(35px); -webkit-backdrop-filter: blur(35px); z-index: 100; animation: fadeUp 1s ease 0.2s backwards; }
+.dock-inner { display: flex; gap: 15px; }
+.dock-inner .app-label { display: none; } /* Hide labels in dock */
+.dock-inner .app-icon-box { width: 55px; height: 55px; margin: 0; }
+
+/* --- New Feature: Quick Notes --- */
+.fab-note { position: fixed; bottom: 120px; right: 20px; width: 55px; height: 55px; border-radius: 50%; background: var(--glass-bg); border: 1px solid var(--glass-border); font-size: 1.5rem; box-shadow: var(--shadow); backdrop-filter: blur(20px); cursor: pointer; z-index: 99; transition: transform 0.2s; }
+.fab-note:active { transform: scale(0.9); }
+
+.note-modal { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.4); backdrop-filter: blur(10px); display: none; align-items: center; justify-content: center; z-index: 2000; opacity: 0; transition: opacity 0.3s; }
+.note-modal.active { display: flex; opacity: 1; }
+.note-content { width: 90%; max-width: 400px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 24px; padding: 20px; box-shadow: var(--shadow); }
+.note-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+.note-header h3 { font-size: 1.2rem; font-weight: 600; }
+#closeNote { background: var(--text-muted); color: white; border: none; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; }
+#noteArea { width: 100%; height: 200px; background: var(--icon-box-bg); color: var(--text-main); border: 1px solid var(--glass-border); border-radius: 12px; padding: 15px; font-size: 1rem; outline: none; resize: none; font-family: inherit; }
+#noteArea:focus { border-color: var(--accent); }
 
 /* Animations */
 @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
