@@ -1,32 +1,25 @@
 /* =========================================
-   1. APP CONFIGURATION (12 APPS - REAL LOGOS)
+   1. INLINE SVG CONFIGURATION (0ms LOAD TIME)
    ========================================= */
-// We use Google's Favicon API to fetch the real, high-resolution logos automatically.
 const appsConfig = [
-    { name: 'Facebook', url: 'https://www.facebook.com', imgUrl: 'https://www.google.com/s2/favicons?domain=facebook.com&sz=128' },
-    { name: 'YouTube', url: 'https://m.youtube.com/?persist_app=1&app=m', imgUrl: 'https://www.google.com/s2/favicons?domain=youtube.com&sz=128' },
-    { name: 'Telegram', url: 'https://web.telegram.org', imgUrl: 'https://www.google.com/s2/favicons?domain=telegram.org&sz=128' },
-    { name: 'ChatGPT', url: 'https://chatgpt.com', imgUrl: 'https://www.google.com/s2/favicons?domain=chatgpt.com&sz=128' },
-    { name: 'Gemini', url: 'https://gemini.google.com', imgUrl: 'https://www.google.com/s2/favicons?domain=gemini.google.com&sz=128' },
-    { name: 'DeepSeek', url: 'https://chat.deepseek.com', imgUrl: 'https://www.google.com/s2/favicons?domain=deepseek.com&sz=128' },
-    { name: 'GitHub', url: 'https://github.com', imgUrl: 'https://www.google.com/s2/favicons?domain=github.com&sz=128' },
-    { name: 'W3Schools', url: 'https://www.w3schools.com', imgUrl: 'https://www.google.com/s2/favicons?domain=w3schools.com&sz=128' },
-    { name: 'Duolingo', url: 'https://www.duolingo.com', imgUrl: 'https://www.google.com/s2/favicons?domain=duolingo.com&sz=128' },
-    // 3 New Productivity Apps for a perfect 12-grid layout:
-    { name: 'Stack Overflow', url: 'https://stackoverflow.com', imgUrl: 'https://www.google.com/s2/favicons?domain=stackoverflow.com&sz=128' },
-    { name: 'LinkedIn', url: 'https://www.linkedin.com', imgUrl: 'https://www.google.com/s2/favicons?domain=linkedin.com&sz=128' },
-    { name: 'Gmail', url: 'https://mail.google.com', imgUrl: 'https://www.google.com/s2/favicons?domain=mail.google.com&sz=128' }
+    { name: 'Facebook', url: 'https://www.facebook.com', icon: '<path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>' },
+    { name: 'YouTube', url: 'https://m.youtube.com/?persist_app=1&app=m', icon: '<path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>' },
+    { name: 'Telegram', url: 'https://web.telegram.org', icon: '<path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0zm5.82 8.414l-1.956 9.213c-.146.657-.535.818-1.08.513l-2.983-2.197-1.44 1.385c-.159.159-.293.293-.602.293l.213-3.03 5.516-4.981c.24-.213-.053-.332-.373-.118l-6.82 4.293-2.936-.917c-.638-.199-.652-.638.133-.948l11.48-4.425c.532-.199 1.01.118.848 1.018z"/>' },
+    { name: 'ChatGPT', url: 'https://chatgpt.com', icon: '<path d="M22.28 9.82a6.01 6.01 0 0 0-7.02-7.81 6.01 6.01 0 0 0-10.28 2.9A6.01 6.01 0 0 0 4.18 20.3a6.01 6.01 0 0 0 10.28 2.9 6.01 6.01 0 0 0 7.82-13.38zM12 21.8c-1.5 0-2.9-.6-3.9-1.6l8.8-5.1v5.6c-.6 0-1.2.1-1.8.1v-2l-3.1 1.8v1.2zm-7.7-4.4c-.6-1-1-2.2-1-3.4 0-.3 0-.6.1-.9l8.8 5.1-2.8 4.8c-.8-.5-1.5-1.2-2-2L9.2 17l-1.5-2.6-2.5 1.5v1.5zm-1.1-7.9c.7-1.3 1.8-2.3 3.1-2.9l4.5 7.7H2.1c.1-.6.3-1.2.6-1.8l2.5-1.5v-3l-2 1.5zm10.5-6.3c1.5 0 2.9.6 3.9 1.6L8.8 9.9V4.3c.6 0 1.2-.1 1.8-.1v2l3.1-1.8V3.2zm7.7 4.4c.6 1 1 2.2 1 3.4 0 .3 0 .6-.1.9l-8.8-5.1 2.8-4.8c.8.5 1.5 1.2 2 2l1.9 4.1 1.5 2.6 2.5-1.5V9.1zm1.1 7.9c-.7 1.3-1.8 2.3-3.1 2.9L13.2 12h8.7c-.1.6-.3 1.2-.6 1.8l-2.5 1.5v3l2-1.5z"/>' },
+    { name: 'Gemini', url: 'https://gemini.google.com', icon: '<path d="M19.742 9.539a25.048 25.048 0 0 0-6.196-2.585A25.264 25.264 0 0 0 10.96 1.05a1.144 1.144 0 0 0-1.921 0 25.264 25.264 0 0 0-2.585 5.904 25.048 25.048 0 0 0-6.196 2.585 1.144 1.144 0 0 0 0 1.921 25.048 25.048 0 0 0 6.196 2.585 25.264 25.264 0 0 0 2.585 5.904 1.144 1.144 0 0 0 1.921 0 25.264 25.264 0 0 0 2.585-5.904 25.048 25.048 0 0 0 6.196-2.585 1.144 1.144 0 0 0 0-1.921z"/>' },
+    { name: 'DeepSeek', url: 'https://chat.deepseek.com', icon: '<path d="M22 13c0-2.2-1.8-4-4-4-.1 0-.3 0-.4.1C16.2 5.5 12.8 3 8.8 3 4.5 3 1 6.5 1 10.8c0 3.1 1.8 5.8 4.6 7 .6.2 1.3.3 2 .3h8.4c2.8 0 5-2.2 5-5zM8.8 16c-1.3 0-2.4-.6-3.2-1.5C4.7 13.5 4 12.2 4 10.8c0-2.6 2.1-4.8 4.8-4.8s4.8 2.1 4.8 4.8-2.1 4.8-4.8 4.8zm7.2.5h-3.4c.5-1 .8-2.1.8-3.3 0-.6-.1-1.2-.2-1.7 1-.7 2.3-.9 3.5-.6C17.7 11.2 19 12 19 13c0 1.1-.9 2-2 2h-.2z"/>' },
+    { name: 'GitHub', url: 'https://github.com', icon: '<path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>' },
+    { name: 'W3Schools', url: 'https://www.w3schools.com', icon: '<path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>' },
+    { name: 'Duolingo', url: 'https://www.duolingo.com', icon: '<path d="M11.968 2a8.966 8.966 0 00-6.176 15.46L4.764 19.34a1.077 1.077 0 001.218 1.631l2.42-.816A8.966 8.966 0 1011.968 2zm0 15.342a6.37 6.37 0 110-12.74 6.37 6.37 0 010 12.74zm-2.856-7.81a1.458 1.458 0 100-2.916 1.458 1.458 0 000 2.916zm5.712 0a1.458 1.458 0 100-2.916 1.458 1.458 0 000 2.916zm-5.46 2.115a4.2 4.2 0 005.207 0 .611.611 0 10-.765-.956 2.977 2.977 0 01-3.676 0 .611.611 0 00-.765.956z"/>' },
+    { name: 'Gmail', url: 'https://mail.google.com', icon: '<path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L12 10.682l8.073-7.19c1.618-1.213 3.927-.059 3.927 1.965z"/>' }
 ];
 
-/* =========================================
-   2. INITIALIZE APPS GRID (USING REAL IMAGES)
-   ========================================= */
 const appsGrid = document.getElementById('appsGrid');
 appsConfig.forEach(app => {
     const appHTML = `
         <div class="app-container" onclick="openInBrowser('${app.url}')">
             <div class="app-icon-box">
-                <img src="${app.imgUrl}" alt="${app.name}">
+                <svg viewBox="0 0 24 24">${app.icon}</svg>
             </div>
             <span class="app-label">${app.name}</span>
         </div>
@@ -34,11 +27,36 @@ appsConfig.forEach(app => {
     appsGrid.innerHTML += appHTML;
 });
 
-// Force Open in Browser
 window.openInBrowser = function(url) {
     document.getElementById('searchInput').blur(); 
     window.location.href = url;
 };
+
+/* =========================================
+   2. SMART STATUS BAR (BATTERY & NETWORK)
+   ========================================= */
+// Network Status
+function updateNetwork() {
+    const status = document.getElementById('networkStatus');
+    status.innerHTML = navigator.onLine ? '🟢 Online' : '🔴 Offline';
+}
+window.addEventListener('online', updateNetwork);
+window.addEventListener('offline', updateNetwork);
+updateNetwork();
+
+// Battery Status (Only works on supported browsers/devices)
+if ('getBattery' in navigator) {
+    navigator.getBattery().then(function(battery) {
+        function updateBattery() {
+            let level = Math.round(battery.level * 100) + "%";
+            let icon = battery.charging ? "⚡" : "🔋";
+            document.getElementById('batteryStatus').innerText = icon + " " + level;
+        }
+        updateBattery();
+        battery.addEventListener('chargingchange', updateBattery);
+        battery.addEventListener('levelchange', updateBattery);
+    });
+}
 
 /* =========================================
    3. THEME TOGGLE LOGIC
@@ -56,7 +74,7 @@ themeToggle.addEventListener('click', () => {
 });
 
 /* =========================================
-   4. LIVE CLOCK, GREETING & QUOTE
+   4. CLOCK, GREETING & QUOTE
    ========================================= */
 function updateTime() {
     const now = new Date();
@@ -77,24 +95,19 @@ function updateTime() {
 setInterval(updateTime, 1000);
 updateTime();
 
-// Daily Motivation Quotes Feature
 const quotes = [
     "“First, solve the problem. Then, write the code.”",
     "“Code is like humor. When you have to explain it, it’s bad.”",
     "“Consistency is what transforms average into excellence.”",
-    "“Don't watch the clock; do what it does. Keep going.”",
-    "“Make it work, make it right, make it fast.”",
-    "“Learning to write programs stretches your mind.”"
+    "“Don't watch the clock; do what it does. Keep going.”"
 ];
-// Pick a random quote on each reload
 document.getElementById('quoteText').innerText = quotes[Math.floor(Math.random() * quotes.length)];
 
-
 /* =========================================
-   5. DYNAMIC TYPEWRITER PLACEHOLDER
+   5. TYPEWRITER & GOOGLE SEARCH
    ========================================= */
 const searchInput = document.getElementById('searchInput');
-const placeholderTexts = ["Search the web...", "Type a URL...", "Ask ChatGPT...", "Ask Gemini...", "Learn to code..."];
+const placeholderTexts = ["Search the web...", "Type a URL...", "Ask ChatGPT...", "Ask Gemini...", "Check your Gmail..."];
 let textIndex = 0; let charIndex = 0; let isDeleting = false;
 
 function typeWriter() {
@@ -106,23 +119,14 @@ function typeWriter() {
         searchInput.setAttribute('placeholder', currentText.substring(0, charIndex + 1));
         charIndex++;
     }
-
     let typeSpeed = 100;
     if (isDeleting) typeSpeed /= 2;
-
-    if (!isDeleting && charIndex === currentText.length) {
-        typeSpeed = 2000; isDeleting = true;
-    } else if (isDeleting && charIndex === 0) {
-        isDeleting = false; textIndex = (textIndex + 1) % placeholderTexts.length; typeSpeed = 500;
-    }
-
+    if (!isDeleting && charIndex === currentText.length) { typeSpeed = 2000; isDeleting = true; } 
+    else if (isDeleting && charIndex === 0) { isDeleting = false; textIndex = (textIndex + 1) % placeholderTexts.length; typeSpeed = 500; }
     if (searchInput.value === "") { setTimeout(typeWriter, typeSpeed); }
 }
 setTimeout(typeWriter, 1000);
 
-/* =========================================
-   6. GOOGLE SEARCH API & SUGGESTIONS
-   ========================================= */
 const suggestions = document.getElementById('suggestions');
 const clearBtn = document.getElementById('clearBtn');
 let debounceTimer; let currentFocus = -1;
@@ -139,24 +143,14 @@ searchInput.addEventListener('input', () => {
 });
 
 clearBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    searchInput.value = '';
-    clearBtn.style.display = 'none';
-    suggestions.style.display = 'none';
-    searchInput.focus();
-    typeWriter();
+    e.stopPropagation(); searchInput.value = ''; clearBtn.style.display = 'none'; suggestions.style.display = 'none'; searchInput.focus(); typeWriter();
 });
 
 window.handleGoogleSuggestions = function(data) {
     const results = data[1];
     if (!results || results.length === 0) { suggestions.style.display = 'none'; return; }
     currentFocus = -1;
-    suggestions.innerHTML = results.map((item, index) => 
-        `<li id="sug-${index}" onmousedown="searchGo('${item}')">
-            <svg viewBox="0 0 24 24"><path d="M21.71,20.29,18,16.61A9,9,0,1,0,16.61,18l3.68,3.68a1,1,0,0,0,1.42,0A1,1,0,0,0,21.71,20.29ZM11,18a7,7,0,1,1,7-7A7,7,0,0,1,11,18Z"/></svg>
-            <span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${item}</span>
-        </li>`
-    ).join('');
+    suggestions.innerHTML = results.map((item, index) => `<li id="sug-${index}" onmousedown="searchGo('${item}')"><svg viewBox="0 0 24 24"><path d="M21.71,20.29,18,16.61A9,9,0,1,0,16.61,18l3.68,3.68a1,1,0,0,0,1.42,0A1,1,0,0,0,21.71,20.29ZM11,18a7,7,0,1,1,7-7A7,7,0,0,1,11,18Z"/></svg><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${item}</span></li>`).join('');
     suggestions.style.display = 'block';
 };
 
@@ -168,45 +162,18 @@ function fetchSuggestions(query) {
     script.onload = () => document.body.removeChild(script);
 }
 
-/* =========================================
-   7. KEYBOARD NAVIGATION & BUG FIXES
-   ========================================= */
 searchInput.addEventListener('keydown', function(e) {
-    let x = document.getElementById("suggestions");
-    if (x) x = x.getElementsByTagName("li");
+    let x = document.getElementById("suggestions"); if (x) x = x.getElementsByTagName("li");
     if (e.key === 'ArrowDown') { currentFocus++; addActive(x); } 
     else if (e.key === 'ArrowUp') { currentFocus--; addActive(x); } 
     else if (e.key === 'Enter') {
         e.preventDefault();
         if (currentFocus > -1 && x) { x[currentFocus].dispatchEvent(new MouseEvent('mousedown')); } 
-        else {
-            let val = searchInput.value.trim();
-            if (val) {
-                if (val.includes('.') && !val.includes(' ')) { openInBrowser(val.startsWith('http') ? val : 'https://' + val); } 
-                else { searchGo(val); }
-            }
-        }
+        else { let val = searchInput.value.trim(); if (val) { if (val.includes('.') && !val.includes(' ')) { openInBrowser(val.startsWith('http') ? val : 'https://' + val); } else { searchGo(val); } } }
     }
 });
 
-function addActive(x) {
-    if (!x) return false;
-    removeActive(x);
-    if (currentFocus >= x.length) currentFocus = 0;
-    if (currentFocus < 0) currentFocus = (x.length - 1);
-    x[currentFocus].classList.add("suggestion-active");
-    x[currentFocus].scrollIntoView({ block: "nearest" });
-}
-
-function removeActive(x) {
-    for (let i = 0; i < x.length; i++) { x[i].classList.remove("suggestion-active"); }
-}
-
-document.addEventListener('mousedown', (e) => {
-    if (!searchInput.contains(e.target) && !suggestions.contains(e.target) && e.target !== clearBtn) {
-        suggestions.style.display = 'none'; searchInput.blur();
-    }
-});
-window.addEventListener('scroll', () => {
-    if (document.activeElement === searchInput) { searchInput.blur(); }
-}, { passive: true });
+function addActive(x) { if (!x) return false; removeActive(x); if (currentFocus >= x.length) currentFocus = 0; if (currentFocus < 0) currentFocus = (x.length - 1); x[currentFocus].classList.add("suggestion-active"); x[currentFocus].scrollIntoView({ block: "nearest" }); }
+function removeActive(x) { for (let i = 0; i < x.length; i++) { x[i].classList.remove("suggestion-active"); } }
+document.addEventListener('mousedown', (e) => { if (!searchInput.contains(e.target) && !suggestions.contains(e.target) && e.target !== clearBtn) { suggestions.style.display = 'none'; searchInput.blur(); } });
+window.addEventListener('scroll', () => { if (document.activeElement === searchInput) { searchInput.blur(); } }, { passive: true });
