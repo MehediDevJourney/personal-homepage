@@ -41,6 +41,11 @@ const appsConfig = [
         name: 'W3Schools',
         url: 'https://www.w3schools.com',
         icon: '<path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>'
+    },
+    {
+        name: 'Duolingo',
+        url: 'https://www.duolingo.com',
+        icon: '<path d="M11.968 2a8.966 8.966 0 00-6.176 15.46L4.764 19.34a1.077 1.077 0 001.218 1.631l2.42-.816A8.966 8.966 0 1011.968 2zm0 15.342a6.37 6.37 0 110-12.74 6.37 6.37 0 010 12.74zm-2.856-7.81a1.458 1.458 0 100-2.916 1.458 1.458 0 000 2.916zm5.712 0a1.458 1.458 0 100-2.916 1.458 1.458 0 000 2.916zm-5.46 2.115a4.2 4.2 0 005.207 0 .611.611 0 10-.765-.956 2.977 2.977 0 01-3.676 0 .611.611 0 00-.765.956z"/>'
     }
 ];
 
@@ -108,7 +113,7 @@ updateTime();
    5. DYNAMIC TYPEWRITER PLACEHOLDER
    ========================================= */
 const searchInput = document.getElementById('searchInput');
-const placeholderTexts = ["Search the web...", "Type a URL...", "Ask ChatGPT...", "Go to Facebook...", "Learn HTML..."];
+const placeholderTexts = ["Search the web...", "Type a URL...", "Ask ChatGPT...", "Ask Gemini...", "Learn HTML..."];
 let textIndex = 0; let charIndex = 0; let isDeleting = false;
 
 function typeWriter() {
